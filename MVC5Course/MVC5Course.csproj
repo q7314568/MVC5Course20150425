@@ -178,6 +178,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ARController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\CRUDController.cs" />
@@ -400,6 +401,9 @@
     <Content Include="Views\CRUD\Create.cshtml" />
     <Content Include="Views\jQuery\etc.cshtml" />
     <Content Include="Views\Base\Index.cshtml" />
+    <Content Include="Views\AR\Index.cshtml" />
+    <Content Include="Views\AR\View1.cshtml" />
+    <Content Include="Views\AR\View2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
