@@ -161,11 +161,10 @@
           <Property Name="ZipCode" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Occupation" Relationship="Self.FK_Client_Occupation" FromRole="Client" ToRole="Occupation" />
           <NavigationProperty Name="Order" Relationship="Self.fk_Order_ClientId" FromRole="Client" ToRole="Order" />
-          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Longitude" Type="Double" />
           <Property Name="Latitude" Type="Double" />
-          <Property Name="Notes1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="Notes" Type="String" Nullable="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Occupation">
           <Key>
@@ -299,8 +298,8 @@
           <EntitySetMapping Name="Client">
             <EntityTypeMapping TypeName="FabricsModel.Client">
               <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
                 <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-                <ScalarProperty Name="Notes1" ColumnName="Notes" />
                 <ScalarProperty Name="Latitude" ColumnName="Latitude" />
                 <ScalarProperty Name="Longitude" ColumnName="Longitude" />
                 <ScalarProperty Name="ClientId" ColumnName="ClientId" />
