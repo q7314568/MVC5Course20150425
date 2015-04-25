@@ -1,5 +1,6 @@
 namespace MVC5Course.Models
 {
+    using MVC5Course.Models.ValidationAttribute;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -13,11 +14,14 @@ namespace MVC5Course.Models
     {
         [Required]
         public int ProductId { get; set; }
-        
+        [Required]
         [StringLength(80, ErrorMessage="欄位長度不得大於 80 個字元")]
         public string ProductName { get; set; }
+        [Required]
+        [IsMod(ErrorMessage="必須為偶數")]
         public Nullable<decimal> Price { get; set; }
         public Nullable<bool> Active { get; set; }
+        [Required]
         public Nullable<decimal> Stock { get; set; }
     
         public virtual ICollection<OrderLine> OrderLine { get; set; }
