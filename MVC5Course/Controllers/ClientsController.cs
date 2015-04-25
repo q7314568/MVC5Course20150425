@@ -10,12 +10,13 @@ using MVC5Course.Models;
 
 namespace MVC5Course.Controllers
 {
-    public class ClientsController : Controller
+    public class ClientsController : BaseController
     {
         //private FabricsEntities db = new FabricsEntities();
-        ClientRepository repo = RepositoryHelper.GetClientRepository();
+       
         public ActionResult Login()
         {
+            Debug();
             return View();
         }
 
@@ -29,7 +30,7 @@ namespace MVC5Course.Controllers
         public ActionResult Index()
         {
             //var client = db.Client.Include(c => c.Occupation).Take(10);
-            var client = repo.All().Take(10);
+            var client = repoClient.All().Take(10);
             return View(client.ToList());
         }
 
@@ -41,14 +42,14 @@ namespace MVC5Course.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             //Client client = db.Client.Find(id);
-            Client client = repo.Find(id.Value);
+            Client client = repoClient.Find(id.Value);
             if (client == null)
             {
                 return HttpNotFound();
             }
             return View(client);
         }
-        OccupationRepository occRepo = RepositoryHelper.GetOccupationRepository();
+      
         // GET: Clients/Create
         public ActionResult Create()
         {
@@ -65,8 +66,8 @@ namespace MVC5Course.Controllers
         {
             if (ModelState.IsValid)
             {
-                repo.Add(client);
-                repo.UnitOfWork.Commit();
+                repoClient.Add(client);
+                repoClient.UnitOfWork.Commit();
                 //db.Client.Add(client);
                 //db.SaveChanges();
                 return RedirectToAction("Index");
@@ -84,7 +85,7 @@ namespace MVC5Course.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             //Client client = db.Client.Find(id);
-            Client client = repo.Find(id.Value);
+            Client client = repoClient.Find(id.Value);
             if (client == null)
             {
                 return HttpNotFound();
@@ -102,8 +103,8 @@ namespace MVC5Course.Controllers
         {
             if (ModelState.IsValid)
             {
-                repo.UnitOfWork.Context.Entry(client).State = EntityState.Modified;
-                repo.UnitOfWork.Commit();
+                repoClient.UnitOfWork.Context.Entry(client).State = EntityState.Modified;
+                repoClient.UnitOfWork.Commit();
                 //db.Entry(client).State = EntityState.Modified;
                 //db.SaveChanges();
                 return RedirectToAction("Index");
@@ -120,7 +121,7 @@ namespace MVC5Course.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             //Client client = db.Client.Find(id);
-            Client client = repo.Find(id.Value);
+            Client client = repoClient.Find(id.Value);
             if (client == null)
             {
                 return HttpNotFound();
@@ -134,23 +135,14 @@ namespace MVC5Course.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             //Client client = db.Client.Find(id);
-            Client client = repo.Find(id);
-            repo.Delete(client);
-            repo.UnitOfWork.Commit();
+            Client client = repoClient.Find(id);
+            repoClient.Delete(client);
+            repoClient.UnitOfWork.Commit();
             //db.Client.Remove(client);
             //db.SaveChanges();
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                //db.Dispose();
-                repo.UnitOfWork.Context.Dispose();
-                
-            }
-            base.Dispose(disposing);
-        }
+      
     }
 }

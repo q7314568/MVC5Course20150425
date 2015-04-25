@@ -12,12 +12,29 @@ namespace MVC5Course
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            //routes.MapRoute(
+            //    name: "jquery",
+            //    url: "{controller}.{action}/{id}",
+            //    defaults: new { controller = "jQuery", action = "Index", id = UrlParameter.Optional }
+            //);
+
+            //routes.MapRoute(
+            //      name: "jquery2",
+            //      url: "doc/{controller}-{action}/{id}",
+            //      defaults: new { controller = "jQuery", action = "Index", id = UrlParameter.Optional }
+            //  );
+
+
 
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+
+
+
         }
     }
 }
