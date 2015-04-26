@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace MVC5Course.Controllers
 {
-    public class ARController : Controller
+    public class ARController : BaseController
     {
         // GET: AR
         public ActionResult Index()
@@ -34,7 +34,7 @@ namespace MVC5Course.Controllers
             var wc =new WebClient();
             var content= wc.DownloadData("http://upload.wikimedia.org/wikipedia/commons/0/03/Mountain_Bluebird.jpg");
 
-            return File(content, "image/jpeg");
+            return File(content, "image/jpeg","Fil1abc.jpg");
         }
 
         public ActionResult FileDownload4()
@@ -45,6 +45,18 @@ namespace MVC5Course.Controllers
             var content = wc.DownloadData("http://upload.wikimedia.org/wikipedia/commons/0/03/Mountain_Bluebird.jpg");
 
             return File(content, "text/plain");
+        }
+        public ActionResult JsonClients1()
+        {
+            repoClient.UnitOfWork.LazyLoadingEnabled = false;
+            var clientData= repoClient.All().Take(10).ToList();
+
+            return Json(clientData,JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult RedirectAction1()
+        {
+            return RedirectToAction("FileDownload4");
         }
     }
 }

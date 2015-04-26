@@ -163,8 +163,8 @@
           <NavigationProperty Name="Order" Relationship="Self.fk_Order_ClientId" FromRole="Client" ToRole="Order" />
           <Property Name="Longitude" Type="Double" />
           <Property Name="Latitude" Type="Double" />
+          <Property Name="Notes" Type="String" Unicode="false" MaxLength="Max" FixedLength="false" />
           <Property Name="IsDelete" Type="Boolean" Nullable="false" />
-          <Property Name="Notes" Type="String" Nullable="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Occupation">
           <Key>
@@ -298,8 +298,8 @@
           <EntitySetMapping Name="Client">
             <EntityTypeMapping TypeName="FabricsModel.Client">
               <MappingFragment StoreEntitySet="Client">
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
                 <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
                 <ScalarProperty Name="Latitude" ColumnName="Latitude" />
                 <ScalarProperty Name="Longitude" ColumnName="Longitude" />
                 <ScalarProperty Name="ClientId" ColumnName="ClientId" />

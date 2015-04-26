@@ -8,7 +8,7 @@ namespace MVC5Course.Models
 	{
         public override IQueryable<Client> All()
         {
-              return base.All().Where(p=>p.IsDelete);
+              return base.All().Where(p=>p.IsDelete==false);
         }
         public Client Find(int id)
         {
