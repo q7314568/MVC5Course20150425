@@ -29,7 +29,6 @@ namespace MVC5Course.Models
         [StringLength(80, ErrorMessage="欄位長度不得大於 80 個字元")]
         public string ProductName { get; set; }
         [Required]
-        [IsMod(ErrorMessage="必須為偶數")]
         public Nullable<decimal> Price { get; set; }
         public Nullable<bool> Active { get; set; }
         [Required]
