@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace MVC5Course.Controllers
 {
-    public class MBController : Controller
+    public class MBController : BaseController
     {
         public ActionResult Index()
         {
@@ -65,6 +65,39 @@ namespace MVC5Course.Controllers
         {
             ViewBag.result = "ComplexBind1-UserName : " + svm.UserName + ",Password : " + svm.Password;
             return View("ShowBindResult");
+        }
+
+        public ActionResult ComplexBind2()
+        {
+            return View("SimpleBind1");
+        }
+
+        [HttpPost]
+        public ActionResult ComplexBind2(SimpleViewModel item1, SimpleViewModel item2)
+        {
+            ViewBag.result = "ComplexBind1-UserName : " + item1.UserName + ",Password : " + item1.Password;
+            return View("ShowBindResult");
+        }
+
+        public ActionResult ComplexBind3()
+        {
+
+            var data = from i in db.Client
+                       select new SimpleViewModel
+                       {
+                            UserName=i.FirstName,
+                            Password=i.LastName,
+                            age=18
+                       };
+                     
+            return View(data.Take(10));
+        }
+
+        [HttpPost]
+        public ActionResult ComplexBind3(IList<SimpleViewModel> item)
+        {
+
+            return Content("");
         }
     }
 }

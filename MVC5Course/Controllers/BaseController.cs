@@ -11,6 +11,7 @@ namespace MVC5Course.Controllers
     {
         protected ClientRepository repoClient = RepositoryHelper.GetClientRepository();
         protected OccupationRepository occRepo = RepositoryHelper.GetOccupationRepository();
+        protected FabricsEntities db = new FabricsEntities();
         protected override void Dispose(bool disposing)
         {
             if (disposing)
