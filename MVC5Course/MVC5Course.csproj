@@ -410,8 +410,8 @@
     <Content Include="Views\MB\view1.cshtml" />
     <Content Include="Views\MB\ShowBindResult.cshtml" />
     <Content Include="Views\MB\SimpleBind1.cshtml" />
-    <Content Include="Views\MB\ComplexBind2.cshtml" />
     <Content Include="Views\MB\ComplexBind3.cshtml" />
+    <Content Include="Views\MB\ComplexBind2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

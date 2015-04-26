@@ -69,13 +69,13 @@ namespace MVC5Course.Controllers
 
         public ActionResult ComplexBind2()
         {
-            return View("SimpleBind1");
+            return View();
         }
 
         [HttpPost]
         public ActionResult ComplexBind2(SimpleViewModel item1, SimpleViewModel item2)
         {
-            ViewBag.result = "ComplexBind1-UserName : " + item1.UserName + ",Password : " + item1.Password;
+            ViewBag.result = "ComplexBind2-UserName : " + item1.UserName + ",Password : " + item1.Password;
             return View("ShowBindResult");
         }
 
