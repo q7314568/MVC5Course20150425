@@ -99,5 +99,27 @@ namespace MVC5Course.Controllers
 
             return Content("");
         }
+
+
+        [HttpPost]
+        public ActionResult ComplexBind4(FormCollection Form)
+        {
+            var item = new SimpleViewModel();
+            if (TryUpdateModel<SimpleViewModel>(item))
+            {
+                ViewBag.result = "SimpleBind2-UserName : " + Form["UserName"] + ",Password : " + Form["Password"];
+                return View("ShowBindResult");
+            }
+            else
+            {
+                return View(item);
+            }
+           
+        }
+
+        public ActionResult ComplexBind4()
+        {
+            return View();
+        }
     }
 }
