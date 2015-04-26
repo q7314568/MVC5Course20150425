@@ -80,7 +80,7 @@ namespace MVC5Course.Controllers
         public ActionResult Edit(int id,FormCollection From)
         {
             var product = db.Product.Find(id);
-            if (TryUpdateModel<Product>(product, new string[] { "ProductName", "Price", "Stock" }))
+            if (TryUpdateModel<Product>(product,new string[] { "ProductName", "Price", "Stock" }))
             {
                 //db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
@@ -90,6 +90,7 @@ namespace MVC5Course.Controllers
         }
 
         // GET: Products/Delete/5
+        
         public ActionResult Delete(int? id)
         {
             if (id == null)
