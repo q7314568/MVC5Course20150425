@@ -58,5 +58,13 @@ namespace MVC5Course.Controllers
         {
             return RedirectToAction("FileDownload4");
         }
+        public ActionResult HttpNotFound1()
+        {
+            return HttpNotFound();
+        }
+        public ActionResult HttpStatusResult1()
+        {
+            return new HttpStatusCodeResult(500,"test");
+        }
     }
 }
