@@ -14,7 +14,19 @@ namespace MVC5Course.Models
         {
             return this.All().FirstOrDefault(p=>p.ClientId==id);
         }
-        
+        public IEnumerable<Client> GetClientByGender(string Gender)
+        {
+            return this.All().Where(o => o.Gender == Gender).Take(10);
+        }
+
+        public IEnumerable<Client> GetClientByCity(string City)
+        {
+            if (string.IsNullOrEmpty(City))
+            {
+                return this.All();
+            }
+            return this.All().Where(o => o.City == City);
+        }
 	}
 
 	public  interface IClientRepository : IRepository<Client>
