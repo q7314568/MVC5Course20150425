@@ -139,6 +139,9 @@
         </dd>
 
     </dl>
+    <h4>Client's order list</h4>
+    @Html.Action("Index", "Orders", new {ClientId=Model.ClientId })
+
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ClientId }) |

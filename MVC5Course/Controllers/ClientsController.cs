@@ -11,7 +11,7 @@ using MVC5Course.ActionFilter;
 
 namespace MVC5Course.Controllers
 {
-    [Logger]
+   
     public class ClientsController : BaseController
     {
         //private FabricsEntities db = new FabricsEntities();
