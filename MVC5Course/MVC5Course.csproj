@@ -598,6 +598,9 @@
     <Content Include="Views\Metro\Index.cshtml" />
     <Content Include="Views\Shared\_MetroLayout.cshtml" />
     <Content Include="Views\Shared\OrdersList.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Client.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Client.type2.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
