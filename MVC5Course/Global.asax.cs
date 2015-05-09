@@ -18,6 +18,13 @@ namespace MVC5Course
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            // Clears all previously registered view engines.
+            ViewEngines.Engines.Clear();
+
+            // Registers the Razor view engine.
+            ViewEngines.Engines.Add(new RazorViewEngine());
+
         }
     }
 }
