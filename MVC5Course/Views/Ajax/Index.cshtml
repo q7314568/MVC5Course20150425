@@ -11,3 +11,11 @@
 
 
 <div id="now"></div>
+
+@Ajax.ActionLink("GetJson", "GetJson", new AjaxOptions { OnSuccess = "successGetJson", HttpMethod="Post" })
+
+<script>
+    function successGetJson(d) {
+        console.log(d);
+    }
+</script>

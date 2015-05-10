@@ -18,5 +18,9 @@ namespace MVC5Course.Controllers
         {
             return DateTime.Now.ToString();
         }
+        public ActionResult GetJson()
+        {
+            return Json(new { result = "hello world" });
+        }
     }
 }
