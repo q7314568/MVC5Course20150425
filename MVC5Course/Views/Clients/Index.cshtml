@@ -8,6 +8,7 @@
         Layout = "";
     }
     ViewBag.Title = "Index";
+    var Cities = ViewBag.Cities as SelectList;
 }
 
 <h2>Index</h2>
@@ -15,9 +16,25 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 
-    @Html.DropDownList("selectCities", ViewBag.Cities as SelectList, "--select By City--",
-            new { onchange = "location.search='?City='+ $('#selectCities').val();" })
+    @*@Html.DropDownList("selectCities", ViewBag.Cities as SelectList, "--select By City--",
+        new { onchange = "location.search='?City='+ $('#selectCities').val();" })*@
+    @Html.DropDownList("selectCities", Cities, "--select By City--",
+                    new { onchange = "selectByCity(this);" })
 </p>
+
+@section scripts{
+    <script>
+        function selectByCity(o) {
+            $.ajax({
+                url: 'index?City=' + $(o).val(),
+                type: 'get',
+                success: function (r) {
+                    $('#Main').html(r);
+                }
+            })
+        }
+    </script>
+}
 <table class="table">
     <tr>
         <th>
@@ -65,7 +82,7 @@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.ClientId }) |
                 @*@Html.ActionLink("Details", "Details", new { id = item.ClientId }) |*@
-                @Ajax.ActionLink("Details", "Details", new { id = item.ClientId }, new AjaxOptions {UpdateTargetId="ClientDetail" }) |
+                @Ajax.ActionLink("Details", "Details", new { id = item.ClientId }, new AjaxOptions { UpdateTargetId = "ClientDetail" }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.ClientId })
             </td>
         </tr>
@@ -73,9 +90,9 @@
 
 </table>
 @{
-    var clientPagedData=Model as PagedList<Client>;
+    var clientPagedData = Model as PagedList<Client>;
 }
-@Html.PagedListPager(clientPagedData, (p) => Url.Action("index", new {PageNo=p }),
+@Html.PagedListPager(clientPagedData, (p) => Url.Action("index", new { PageNo = p, City = @Cities.SelectedValue }),
 PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing("#Main"))
 <div id="ClientDetail"></div>
 
